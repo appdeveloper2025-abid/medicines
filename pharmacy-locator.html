@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Stores & Pharmacies | PHARMADICES</title>
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/theme-core.css">
+    <link rel="stylesheet" href="assets/css/map-display.css">
+    <link rel="stylesheet" href="assets/css/layout-responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+    <style>
+        /* Additional styles for medical stores page */
+        .stores-header {
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+            padding: 60px 0 40px;
+        }
+        
+        .stores-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .stores-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .city-filter {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .filter-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-input {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 0 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .filter-input i {
+            color: var(--text-light);
+            margin-right: 10px;
+        }
+        
+        .filter-input select {
+            flex: 1;
+            padding: 15px 10px;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+        
+        .find-btn, .location-btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+        
+        .find-btn {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .find-btn:hover {
+            background: #2e7d32;
+        }
+        
+        .location-btn {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        
+        .location-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .filter-hint {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .filter-hint i {
+            margin-right: 5px;
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 40px 0;
+            background: var(--bg-light);
+        }
+        
+        .map-container {
+            position: relative;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        
+        .map {
+            width: 100%;
+            height: 100%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+        }
+        
+        .map-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .map-placeholder i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .map-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        
+        .map-control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .map-control-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .legend-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        
+        .legend-icon.pharmacy {
+            background: #34a853;
+        }
+        
+        .legend-icon.store {
+            background: #4285f4;
+        }
+        
+        .legend-icon.hospital {
+            background: #ea4335;
+        }
+        
+        /* Stores List */
+        .stores-list-section {
+            padding: 60px 0;
+            background: transparent;
+        }
+        
+        .stores-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .stores-count {
+            background: rgba(255,255,255,0.12);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+        
+        .stores-count span {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .stores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .store-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            cursor: pointer;
+            border-top: 4px solid #ff6600;
+            border-left: 1px solid rgba(255,255,255,0.2);
+            border-right: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .store-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .store-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.25);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .store-type {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .store-type.pharmacy {
+            background: rgba(46,125,50,0.25);
+            color: #ffffff;
+        }
+        
+        .store-type.hospital {
+            background: rgba(198,40,40,0.25);
+            color: #ffffff;
+        }
+        
+        .store-type.store {
+            background: rgba(21,101,192,0.25);
+            color: #ffffff;
+        }
+        
+        .emergency-badge {
+            background: #ff5252;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .store-card-body {
+            padding: 20px;
+        }
+        
+        .store-name {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .store-address,
+        .store-city,
+        .store-timing,
+        .store-phone {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .store-distance {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            color: #ff6600;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .store-card-footer {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-store-btn,
+        .directions-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .view-store-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .view-store-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .directions-btn {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .directions-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Emergency Section */
+        .emergency-section {
+            margin-top: 40px;
+        }
+        
+        .emergency-card {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background: rgba(255,152,0,0.12);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #ff9800;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            border-right: 1px solid rgba(255,255,255,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .emergency-icon {
+            font-size: 3rem;
+            color: #ff9800;
+            flex-shrink: 0;
+        }
+        
+        .emergency-content h3 {
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .emergency-content p {
+            color: #5d4037;
+            line-height: 1.6;
+        }
+        
+        /* City Information */
+        .city-info {
+            padding: 60px 0;
+            background: transparent;
+        }
+        
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .city-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .city-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+        }
+        
+        .city-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .store-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .city-body {
+            padding: 20px;
+        }
+        
+        .city-body p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Important Notice */
+        .important-notice {
+            padding: 40px 0;
+            background: transparent;
+        }
+        
+        .notice-content {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background: rgba(255,255,255,0.08);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .notice-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        
+        .notice-text h3 {
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .notice-text p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Store Modal */
+        .store-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .store-modal-content {
+            background: rgba(15,15,15,0.97);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 40px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .store-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .store-modal-header h2 {
+            margin: 0;
+            color: var(--text-dark);
+            font-size: 1.8rem;
+        }
+        
+        .store-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .store-modal-close:hover {
+            background: rgba(255,255,255,0.15);
+            color: #ffffff;
+        }
+        
+        .store-modal-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        /* Store Detail Styles */
+        .store-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .store-detail-type {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .store-detail-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .detail-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .detail-col h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        .detail-col p {
+            color: var(--text-light);
+            line-height: 1.6;
+            padding-left: 28px;
+        }
+        
+        .store-detail-section {
+            margin-top: 25px;
+        }
+        
+        .store-detail-section h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        
+        .store-detail-section p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .service-tag {
+            background: rgba(21,101,192,0.25);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .store-detail-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .action-btn.get-directions {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .action-btn.get-directions:hover {
+            background: var(--primary-dark);
+        }
+        
+        .action-btn.call-store {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .action-btn.call-store:hover:not(:disabled) {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .action-btn.call-store:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stores-title {
+                font-size: 2rem;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+            }
+            
+            .filter-input {
+                min-width: 100%;
+            }
+            
+            .map-container {
+                height: 400px;
+            }
+            
+            .stores-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .emergency-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .notice-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .store-detail-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .stores-header {
+                padding: 40px 0 30px;
+            }
+            
+            .stores-title {
+                font-size: 1.8rem;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .city-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .store-modal-content {
+                margin: 20px auto;
+            }
+            
+            .store-modal-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .detail-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pills"></i>
+                <span>PHARMADICES</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="drug-database.html"><i class="fas fa-capsules"></i> Medicines</a></li>
+                <li><a href="pharmacy-locator.html" class="active"><i class="fas fa-map-marker-alt"></i> Medical Stores</a></li>
+                <li><a href="health-tracker.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="our-team.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Stores Header -->
+    <header class="stores-header">
+        <div class="container">
+            <div class="stores-header-content">
+                <h1 class="stores-title">Find Medical Stores & Pharmacies</h1>
+                <p class="stores-subtitle">Locate pharmacies and medical stores across Pakistan, including Lakki Marwat</p>
+                
+                <!-- Enhanced Search Container -->
+                <div class="stores-search-container">
+                    <div class="stores-search-title">
+                        <i class="fas fa-search"></i>
+                        <span>Find Medical Stores & Pharmacies</span>
+                    </div>
+                    
+                    <div class="stores-search-box">
+                        <div class="stores-search-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <input type="text" id="stores-search" class="stores-search-input" placeholder="Search by store name, location, or services...">
+                        <button class="stores-search-button" id="search-stores-btn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    
+                    <div class="stores-search-suggestions">
+                        <button class="store-suggestion-tag" data-search="pharmacy lakki marwat">
+                            <i class="fas fa-prescription-bottle-alt"></i> Pharmacies in Lakki Marwat
+                        </button>
+                        <button class="store-suggestion-tag" data-search="24/7 pharmacy">
+                            <i class="fas fa-clock"></i> 24/7 Pharmacies
+                        </button>
+                        <button class="store-suggestion-tag" data-search="hospital pharmacy">
+                            <i class="fas fa-hospital"></i> Hospital Pharmacies
+                        </button>
+                        <button class="store-suggestion-tag" data-search="medical store near me">
+                            <i class="fas fa-location-arrow"></i> Near Me
+                        </button>
+                    </div>
+                </div>
+                    <!-- Enhanced City Filter -->
+                    <div class="enhanced-city-filter">
+                        <div class="filter-container">
+                            <div class="filter-input">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <select id="city-select">
+                                    <option value="all">All Cities</option>
+                                    <option value="lakki-marwat">Lakki Marwat</option>
+                                    <option value="islamabad">Islamabad</option>
+                                    <option value="rawalpindi">Rawalpindi</option>
+                                    <option value="lahore">Lahore</option>
+                                    <option value="karachi">Karachi</option>
+                                    <option value="peshawar">Peshawar</option>
+                                    <option value="quetta">Quetta</option>
+                                    <option value="multan">Multan</option>
+                                    <option value="faisalabad">Faisalabad</option>
+                                </select>
+                            </div>
+                            
+                            <button id="find-stores" class="find-btn">
+                                <i class="fas fa-search"></i> Find Stores
+                            </button>
+                            
+                            <button id="use-location" class="location-btn">
+                                <i class="fas fa-location-arrow"></i> Use My Location
+                            </button>
+                        </div>
+                        
+                        <div class="filter-hint">
+                            <p><i class="fas fa-info-circle"></i> Select a city to view pharmacies in that area or use your current location</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <!-- Beautiful TV-Style Map Container -->
+            <div class="tv-map-container">
+                <!-- TV Brand Label -->
+                <div class="tv-brand">PHARMADICES TV</div>
+                
+                <!-- TV Screen with Google Map -->
+                <div class="tv-map-screen">
+                    <!-- TV Channel Display -->
+                    <div class="tv-channel">CH 01 - MAPS</div>
+                    
+                    <!-- TV Volume Bar -->
+                    <div class="tv-volume">
+                        <div class="tv-volume-fill"></div>
+                    </div>
+                    
+                    <!-- TV Static Effect (hidden by default) -->
+                    <div class="tv-static"></div>
+                    
+                    <!-- FREE Google Map Embed - No API Key Required -->
+                    <iframe 
+                        id="google-map-iframe"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109880.35834448939!2d70.91167!3d32.60783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df94b8e8b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sLakki%20Marwat%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s&maptype=roadmap&zoom=12"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Medical Stores Map - Lakki Marwat">
+                    </iframe>
+                </div>
+                
+                <!-- TV Controls Panel - Below Screen -->
+                <div class="tv-controls-panel">
+                    <!-- Zoom Out Button -->
+                    <button class="tv-control-btn" id="zoom-out-btn" title="Zoom Out">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    
+                    <!-- Map Type Button -->
+                    <button class="tv-control-btn" id="map-type-btn" title="Map Type">
+                        <i class="fas fa-map"></i>
+                    </button>
+                    
+                    <!-- Power Button (Center & Larger) -->
+                    <button class="tv-control-btn tv-power-btn" id="tv-power-btn" title="Power On/Off">
+                        <i class="fas fa-power-off"></i>
+                    </button>
+                    
+                    <!-- Location Button -->
+                    <button class="tv-control-btn" id="location-btn" title="My Location">
+                        <i class="fas fa-location-arrow"></i>
+                    </button>
+                    
+                    <!-- Zoom In Button -->
+                    <button class="tv-control-btn" id="zoom-in-btn" title="Zoom In">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Map Legend -->
+            <div class="map-legend">
+                <div class="legend-item">
+                    <span class="legend-icon pharmacy"></span>
+                    <span>24/7 Pharmacy</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon store"></span>
+                    <span>Medical Store</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon hospital"></span>
+                    <span>Hospital Pharmacy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stores List -->
+    <section class="stores-list-section">
+        <div class="container">
+            <div class="stores-list-header">
+                <h2 class="section-title">Medical Stores Directory</h2>
+                <div class="stores-count">
+                    <span id="stores-count">12</span> stores found
+                </div>
+            </div>
+            
+            <!-- Stores Grid -->
+            <div id="stores-grid" class="stores-grid">
+                <!-- Store cards will be dynamically loaded by JavaScript -->
+                <!-- For now, showing sample stores -->
+                <div class="store-card" data-id="1">
+                    <div class="store-card-header">
+                        <div class="store-type pharmacy">
+                            <i class="fas fa-prescription-bottle-alt"></i>
+                            <span>Pharmacy</span>
+                        </div>
+                        <span class="emergency-badge">24/7</span>
+                    </div>
+                    
+                    <div class="store-card-body">
+                        <h3 class="store-name">Marwat Pharmacy</h3>
+                        <div class="store-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>City Center, Lakki Marwat</span>
+                        </div>
+                        <div class="store-city">
+                            <i class="fas fa-city"></i>
+                            <span>Lakki Marwat</span>
+                        </div>
+                        <div class="store-timing">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7</span>
+                        </div>
+                        <div class="store-phone">
+                            <i class="fas fa-phone"></i>
+                            <span>0966-234567</span>
+                        </div>
+                    </div>
+                    
+                    <div class="store-card-footer">
+                        <button class="view-store-btn" data-id="1">
+                            <i class="fas fa-info-circle"></i> View Details
+                        </button>
+                        <button class="directions-btn" data-id="1">
+                            <i class="fas fa-directions"></i> Directions
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="store-card" data-id="2">
+                    <div class="store-card-header">
+                        <div class="store-type store">
+                            <i class="fas fa-store"></i>
+                            <span>Medical Store</span>
+                        </div>
+                    </div>
+                    
+                    <div class="store-card-body">
+                        <h3 class="store-name">Al-Shifa Medical Store</h3>
+                        <div class="store-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Main Bazaar, Lakki Marwat</span>
+                        </div>
+                        <div class="store-city">
+                            <i class="fas fa-city"></i>
+                            <span>Lakki Marwat</span>
+                        </div>
+                        <div class="store-timing">
+                            <i class="fas fa-clock"></i>
+                            <span>9:00 AM - 11:00 PM</span>
+                        </div>
+                        <div class="store-phone">
+                            <i class="fas fa-phone"></i>
+                            <span>0966-123456</span>
+                        </div>
+                    </div>
+                    
+                    <div class="store-card-footer">
+                        <button class="view-store-btn" data-id="2">
+                            <i class="fas fa-info-circle"></i> View Details
+                        </button>
+                        <button class="directions-btn" data-id="2">
+                            <i class="fas fa-directions"></i> Directions
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="store-card" data-id="4">
+                    <div class="store-card-header">
+                        <div class="store-type hospital">
+                            <i class="fas fa-hospital"></i>
+                            <span>Hospital Pharmacy</span>
+                        </div>
+                        <span class="emergency-badge">24/7</span>
+                    </div>
+                    
+                    <div class="store-card-body">
+                        <h3 class="store-name">Islamabad Medical Center</h3>
+                        <div class="store-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Blue Area, Islamabad</span>
+                        </div>
+                        <div class="store-city">
+                            <i class="fas fa-city"></i>
+                            <span>Islamabad</span>
+                        </div>
+                        <div class="store-timing">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7</span>
+                        </div>
+                        <div class="store-phone">
+                            <i class="fas fa-phone"></i>
+                            <span>051-1234567</span>
+                        </div>
+                    </div>
+                    
+                    <div class="store-card-footer">
+                        <button class="view-store-btn" data-id="4">
+                            <i class="fas fa-info-circle"></i> View Details
+                        </button>
+                        <button class="directions-btn" data-id="4">
+                            <i class="fas fa-directions"></i> Directions
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Emergency Section -->
+            <div class="emergency-section">
+                <div class="emergency-card">
+                    <div class="emergency-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div class="emergency-content">
+                        <h3>Emergency Pharmacy Services</h3>
+                        <p>Some pharmacies offer 24/7 emergency services. Look for the <span class="emergency-badge">24/7</span> badge in the store listings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Information -->
+    <section class="city-info">
+        <div class="container">
+            <h2 class="section-title">Major Cities Coverage</h2>
+            <p class="section-subtitle">We list pharmacies and medical stores in major cities across Pakistan</p>
+            
+            <div class="cities-grid">
+                <div class="city-card">
+                    <div class="city-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Lakki Marwat</h3>
+                        <span class="store-count">15+ stores</span>
+                    </div>
+                    <div class="city-body">
+                        <p>Local pharmacies and medical stores serving the Lakki Marwat community with essential medicines and healthcare products.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <div class="city-header">
+                        <h3><i class="fas fa-city"></i> Islamabad & Rawalpindi</h3>
+                        <span class="store-count">50+ stores</span>
+                    </div>
+                    <div class="city-body">
+                        <p>Major pharmacies and 24/7 medical stores in the twin cities, including hospital pharmacies and chain stores.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <div class="city-header">
+                        <h3><i class="fas fa-university"></i> Lahore</h3>
+                        <span class="store-count">40+ stores</span>
+                    </div>
+                    <div class="city-body">
+                        <p>Leading medical stores and pharmacies across Lahore, including specialized medicine stores.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <div class="city-header">
+                        <h3><i class="fas fa-building"></i> Karachi</h3>
+                        <span class="store-count">60+ stores</span>
+                    </div>
+                    <div class="city-body">
+                        <p>Extensive network of pharmacies and medical stores serving Pakistan's largest city.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Notice -->
+    <section class="important-notice">
+        <div class="container">
+            <div class="notice-content">
+                <div class="notice-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="notice-text">
+                    <h3>Important Notice for Users</h3>
+                    <p>Store timings and availability may vary. Always call ahead to confirm operating hours, especially during holidays or emergencies. Some stores may require prescription for certain medications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-pills"></i>
+                        <span>PHARMADICES</span>
+                    </div>
+                    <p class="footer-description">A comprehensive, static medicine information website providing reliable drug information for healthcare professionals and patients.</p>
+                    <div class="footer-disclaimer">
+                        <p><strong>Disclaimer:</strong> This information is for educational purposes only. Always consult a healthcare professional.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="drug-database.html">Medicines Database</a></li>
+                        <li><a href="pharmacy-locator.html">Medical Stores</a></li>
+                        <li><a href="our-team.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Medicine Uses</a></li>
+                        <li><a href="#">Dosage Guidelines</a></li>
+                        <li><a href="#">Side Effects</a></li>
+                        <li><a href="#">Drug Interactions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-graduation-cap"></i> GPGC Lakki Marwat</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lakki Marwat, KPK, Pakistan</p>
+                    <p><i class="fas fa-envelope"></i> info@pharmadices.com</p>
+                </div>
+            </div>
+            
+
+            
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year">2023</span> PHARMADICES. All rights reserved. | Developed by Students of GPGC Lakki Marwat</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Store Detail Modal -->
+    <div id="store-modal" class="store-modal">
+        <div class="store-modal-content">
+            <div class="store-modal-header">
+                <h2 id="store-modal-title">Store Details</h2>
+                <button class="store-modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="store-modal-body" id="store-modal-body">
+                <!-- Store details will be loaded here by JavaScript -->
+                <div class="store-detail-header">
+                    <div class="store-detail-type pharmacy">
+                        <i class="fas fa-prescription-bottle-alt"></i>
+                        <span>Pharmacy</span>
+                    </div>
+                    <span class="emergency-badge large">24/7 Emergency</span>
+                </div>
+                
+                <div class="store-detail-info">
+                    <div class="detail-row">
+                        <div class="detail-col">
+                            <h4><i class="fas fa-map-marker-alt"></i> Address</h4>
+                            <p>City Center, Lakki Marwat</p>
+                        </div>
+                        <div class="detail-col">
+                            <h4><i class="fas fa-city"></i> City</h4>
+                            <p>Lakki Marwat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-col">
+                            <h4><i class="fas fa-phone"></i> Phone</h4>
+                            <p>0966-234567</p>
+                        </div>
+                        <div class="detail-col">
+                            <h4><i class="fas fa-clock"></i> Timing</h4>
+                            <p>24/7</p>
+                        </div>
+                    </div>
+                    
+                    <div class="store-detail-section">
+                        <h3><i class="fas fa-info-circle"></i> Description</h3>
+                        <p>24/7 pharmacy providing emergency medical services in Lakki Marwat. Well-stocked with essential medicines and healthcare products.</p>
+                    </div>
+                    
+                    <div class="store-detail-section">
+                        <h3><i class="fas fa-concierge-bell"></i> Services</h3>
+                        <div class="services-list">
+                            <span class="service-tag">24/7 Service</span>
+                            <span class="service-tag">Emergency Medicines</span>
+                            <span class="service-tag">Prescription</span>
+                            <span class="service-tag">First Aid</span>
+                            <span class="service-tag">OTC Drugs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="store-detail-actions">
+                    <button class="action-btn get-directions">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </button>
+                    <button class="action-btn call-store">
+                        <i class="fas fa-phone"></i> Call Store
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/geo-map.js"></script>
+    
+    <script>
+        // Initialize medical stores page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update current year in footer
+            const currentYear = new Date().getFullYear();
+            const yearElements = document.querySelectorAll('.current-year');
+            yearElements.forEach(element => {
+                element.textContent = currentYear;
+            });
+            
+            // Initialize search functionality
+            initStoresSearch();
+            
+            // Setup store card functionality
+            setupStoreCards();
+            
+            // Setup city filter
+            setupCityFilter();
+            
+            // Setup modal functionality
+            setupStoreModal();
+            
+            // Setup TV controls
+            setupTVControls();
+            
+            // Setup hamburger menu
+            setupHamburgerMenu();
+        });
+        
+        function initStoresSearch() {
+            const searchInput = document.getElementById('stores-search');
+            const searchButton = document.getElementById('search-stores-btn');
+            const suggestionTags = document.querySelectorAll('.store-suggestion-tag');
+            
+            if (searchInput && searchButton) {
+                // Real-time search functionality
+                let searchTimeout;
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        const query = this.value.toLowerCase().trim();
+                        if (query.length > 2) {
+                            performMapSearch(query);
+                            filterStoreCards(query);
+                        }
+                    }, 500);
+                });
+                
+                // Search button click
+                searchButton.addEventListener('click', function() {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        performMapSearch(query);
+                        filterStoreCards(query);
+                        showSearchNotification('Searching for: ' + query);
+                    } else {
+                        alert('Please enter a search term');
+                    }
+                });
+                
+                // Enter key support
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchButton.click();
+                    }
+                });
+            }
+            
+            // Suggestion tags functionality
+            suggestionTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const searchTerm = this.getAttribute('data-search');
+                    if (searchInput) {
+                        searchInput.value = searchTerm;
+                    }
+                    performMapSearch(searchTerm);
+                    filterStoreCards(searchTerm);
+                    showSearchNotification('Searching for: ' + searchTerm);
+                    
+                    // Visual feedback
+                    this.style.background = 'rgba(255, 102, 0, 0.4)';
+                    this.style.color = '#ffffff';
+                    setTimeout(() => {
+                        this.style.background = 'rgba(255, 102, 0, 0.15)';
+                        this.style.color = '#ff6600';
+                    }, 300);
+                });
+            });
+        }
+        
+        function performMapSearch(query) {
+            const mapIframe = document.getElementById('google-map-iframe');
+            if (!mapIframe) return;
+            
+            // Determine search location and type
+            let searchQuery = query;
+            let lat = 32.60783; // Default: Lakki Marwat
+            let lng = 70.91167;
+            
+            // Enhanced search logic
+            if (query.includes('near me') || query.includes('nearby')) {
+                // Use current location if available
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        function(position) {
+                            lat = position.coords.latitude;
+                            lng = position.coords.longitude;
+                            updateMapWithSearch(lat, lng, 'Medical Stores Pharmacies near me');
+                        },
+                        function() {
+                            updateMapWithSearch(lat, lng, searchQuery + ' Pakistan');
+                        }
+                    );
+                    return;
+                }
+            }
+            
+            // City-specific searches
+            if (query.includes('lakki marwat')) {
+                lat = 32.60783;
+                lng = 70.91167;
+                searchQuery = query + ' Lakki Marwat Pakistan';
+            } else if (query.includes('islamabad')) {
+                lat = 33.6844;
+                lng = 73.0479;
+                searchQuery = query + ' Islamabad Pakistan';
+            } else if (query.includes('lahore')) {
+                lat = 31.5204;
+                lng = 74.3587;
+                searchQuery = query + ' Lahore Pakistan';
+            } else if (query.includes('karachi')) {
+                lat = 24.8607;
+                lng = 67.0011;
+                searchQuery = query + ' Karachi Pakistan';
+            } else if (query.includes('rawalpindi')) {
+                lat = 33.5651;
+                lng = 73.0169;
+                searchQuery = query + ' Rawalpindi Pakistan';
+            } else if (query.includes('peshawar')) {
+                lat = 34.0151;
+                lng = 71.5249;
+                searchQuery = query + ' Peshawar Pakistan';
+            } else {
+                // General search - add Pakistan and medical context
+                searchQuery = query + ' Medical Stores Pharmacies Pakistan';
+            }
+            
+            updateMapWithSearch(lat, lng, searchQuery);
+        }
+        
+        function updateMapWithSearch(lat, lng, searchQuery) {
+            const mapIframe = document.getElementById('google-map-iframe');
+            if (!mapIframe) return;
+            
+            // Use Google Maps ?q= embed — works without API key, shows real search results
+            const encodedQuery = encodeURIComponent(searchQuery);
+            const newUrl = `https://maps.google.com/maps?q=${encodedQuery}&output=embed&t=m&z=14`;
+            
+            mapIframe.src = newUrl;
+            
+            console.log('🔍 Map updated with search:', searchQuery);
+            console.log('📍 Location:', lat, lng);
+        }
+        
+        function filterStoreCards(query) {
+            const storeCards = document.querySelectorAll('.store-card');
+            let visibleCount = 0;
+            
+            storeCards.forEach(card => {
+                const storeName = card.querySelector('.store-name')?.textContent.toLowerCase() || '';
+                const storeAddress = card.querySelector('.store-address span')?.textContent.toLowerCase() || '';
+                const storeCity = card.querySelector('.store-city span')?.textContent.toLowerCase() || '';
+                const storeType = card.querySelector('.store-type span')?.textContent.toLowerCase() || '';
+                
+                const matches = !query || 
+                    storeName.includes(query.toLowerCase()) || 
+                    storeAddress.includes(query.toLowerCase()) || 
+                    storeCity.includes(query.toLowerCase()) ||
+                    storeType.includes(query.toLowerCase());
+                
+                if (matches) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Update stores count
+            const countElement = document.getElementById('stores-count');
+            if (countElement) {
+                countElement.textContent = visibleCount;
+            }
+            
+            console.log(`📊 Found ${visibleCount} matching stores`);
+        }
+        
+        function showSearchNotification(message) {
+            const channel = document.querySelector('.tv-channel');
+            if (channel) {
+                const originalText = channel.textContent;
+                channel.textContent = 'SEARCHING...';
+                channel.style.color = '#ffff00';
+                
+                setTimeout(() => {
+                    channel.textContent = 'RESULTS FOUND';
+                    channel.style.color = '#00ff00';
+                }, 1000);
+                
+                setTimeout(() => {
+                    channel.textContent = originalText;
+                    channel.style.color = '#00ff00';
+                }, 3000);
+            }
+            
+            console.log('🔔 Search notification:', message);
+        }
+        
+        function setupStoreCards() {
+            // Add click events to store cards
+            const storeCards = document.querySelectorAll('.store-card');
+            const viewButtons = document.querySelectorAll('.view-store-btn');
+            const directionButtons = document.querySelectorAll('.directions-btn');
+            
+            storeCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('button')) {
+                        const storeId = this.getAttribute('data-id');
+                        showStoreDetails(storeId);
+                    }
+                });
+            });
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const storeId = this.getAttribute('data-id');
+                    showStoreDetails(storeId);
+                });
+            });
+            
+            directionButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const storeId = this.getAttribute('data-id');
+                    openDirections(storeId);
+                });
+            });
+        }
+        
+        function setupCityFilter() {
+            const citySelect = document.getElementById('city-select');
+            const findStoresBtn = document.getElementById('find-stores');
+            const useLocationBtn = document.getElementById('use-location');
+            
+            if (findStoresBtn) {
+                findStoresBtn.addEventListener('click', function() {
+                    const selectedCity = citySelect ? citySelect.value : 'all';
+                    filterStoresByCity(selectedCity);
+                    
+                    // Visual feedback
+                    this.style.background = 'linear-gradient(135deg, #ff8533 0%, #ffaa66 100%)';
+                    setTimeout(() => {
+                        this.style.background = 'linear-gradient(135deg, #ff6600 0%, #ff8533 100%)';
+                    }, 200);
+                });
+            }
+            
+            if (useLocationBtn) {
+                useLocationBtn.addEventListener('click', function() {
+                    // Visual feedback
+                    this.style.background = 'rgba(255, 255, 255, 0.3)';
+                    this.style.transform = 'translateY(-2px)';
+                    
+                    setTimeout(() => {
+                        this.style.background = 'rgba(255, 255, 255, 0.1)';
+                        this.style.transform = 'translateY(0)';
+                    }, 200);
+                    
+                    if (navigator.geolocation) {
+                        showSearchNotification('Getting your location...');
+                        
+                        navigator.geolocation.getCurrentPosition(
+                            function(position) {
+                                const lat = position.coords.latitude;
+                                const lng = position.coords.longitude;
+                                
+                                // Update map to user's location
+                                updateMapWithSearch(lat, lng, 'Medical Stores Pharmacies near me');
+                                
+                                // Update search input
+                                const searchInput = document.getElementById('stores-search');
+                                if (searchInput) {
+                                    searchInput.value = 'Medical stores near my location';
+                                }
+                                
+                                showSearchNotification('Found your location!');
+                                console.log(`📍 Your location: ${lat}, ${lng}`);
+                            },
+                            function(error) {
+                                console.error('Location error:', error);
+                                alert('Unable to get your location. Please enable location services or try searching manually.');
+                                showSearchNotification('Location access denied');
+                            },
+                            {
+                                enableHighAccuracy: true,
+                                timeout: 10000,
+                                maximumAge: 300000
+                            }
+                        );
+                    } else {
+                        alert('Geolocation is not supported by your browser. Please search manually.');
+                    }
+                });
+            }
+            
+            // City select change handler
+            if (citySelect) {
+                citySelect.addEventListener('change', function() {
+                    const selectedCity = this.value;
+                    if (selectedCity !== 'all') {
+                        // Auto-search when city is selected
+                        const searchInput = document.getElementById('stores-search');
+                        if (searchInput) {
+                            searchInput.value = `Medical stores in ${this.options[this.selectedIndex].text}`;
+                        }
+                        filterStoresByCity(selectedCity);
+                    }
+                });
+            }
+        }
+        
+        function setupStoreModal() {
+            const closeModalBtn = document.querySelector('.store-modal-close');
+            const modal = document.getElementById('store-modal');
+            
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+            }
+            
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Setup call store button
+            const callStoreBtn = document.querySelector('.call-store');
+            if (callStoreBtn) {
+                callStoreBtn.addEventListener('click', function() {
+                    const phoneNumber = '0966234567'; // This would come from store data
+                    window.location.href = 'tel:' + phoneNumber;
+                });
+            }
+            
+            // Setup get directions button
+            const getDirectionsBtn = document.querySelector('.get-directions');
+            if (getDirectionsBtn) {
+                getDirectionsBtn.addEventListener('click', function() {
+                    // This would open Google Maps with the store location
+                    window.open('https://www.google.com/maps/dir/?api=1&destination=Lakki+Marwat', '_blank');
+                });
+            }
+        }
+        
+        function setupTVControls() {
+            // TV Power Button
+            const powerBtn = document.getElementById('tv-power-btn');
+            const tvScreen = document.querySelector('.tv-map-screen');
+            const tvStatic = document.querySelector('.tv-static');
+            const mapIframe = document.getElementById('google-map-iframe');
+            
+            let tvOn = true;
+            let currentZoom = 12;
+            let currentMapType = 'roadmap';
+            const mapTypes = ['roadmap', 'satellite', 'hybrid', 'terrain'];
+            let currentMapTypeIndex = 0;
+            
+            // Current search query tracker
+            let currentSearchQuery = 'Medical Stores Pharmacies Lakki Marwat Pakistan';
+            
+            function updateMapUrl() {
+                if (mapIframe && tvOn) {
+                    const encodedQuery = encodeURIComponent(currentSearchQuery);
+                    mapIframe.src = `https://maps.google.com/maps?q=${encodedQuery}&output=embed&t=${currentMapType === 'satellite' ? 'k' : 'm'}&z=${currentZoom}`;
+                }
+            }
+            
+            // Keep currentSearchQuery in sync when performMapSearch runs
+            const _origUpdateMap = window.updateMapWithSearch;
+            window._setCurrentSearchQuery = function(q) { currentSearchQuery = q; };
+            
+            function toggleTV() {
+                if (tvOn) {
+                    // Turn off TV
+                    tvScreen.style.opacity = '0.1';
+                    tvStatic.style.display = 'block';
+                    setTimeout(() => {
+                        tvStatic.style.display = 'none';
+                        mapIframe.style.display = 'none';
+                        tvScreen.style.background = '#000000';
+                    }, 1000);
+                    tvOn = false;
+                    powerBtn.style.background = 'radial-gradient(circle, #666666, #333333)';
+                } else {
+                    // Turn on TV
+                    tvStatic.style.display = 'block';
+                    powerBtn.style.background = 'radial-gradient(circle, #ff6600, #ff4400)';
+                    setTimeout(() => {
+                        tvScreen.style.opacity = '1';
+                        tvScreen.style.background = 'transparent';
+                        mapIframe.style.display = 'block';
+                        tvStatic.style.display = 'none';
+                        updateMapUrl();
+                    }, 1500);
+                    tvOn = true;
+                }
+            }
+            
+            // Power Button
+            if (powerBtn) {
+                powerBtn.addEventListener('click', toggleTV);
+            }
+            
+            // Zoom In Button
+            const zoomInBtn = document.getElementById('zoom-in-btn');
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', function() {
+                    if (tvOn && currentZoom < 18) {
+                        currentZoom += 2;
+                        updateMapUrl();
+                        // Visual feedback
+                        this.style.background = 'radial-gradient(circle, #00ff00, #008800)';
+                        setTimeout(() => {
+                            this.style.background = 'radial-gradient(circle, #666666, #333333)';
+                        }, 200);
+                    }
+                });
+            }
+            
+            // Zoom Out Button
+            const zoomOutBtn = document.getElementById('zoom-out-btn');
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', function() {
+                    if (tvOn && currentZoom > 6) {
+                        currentZoom -= 2;
+                        updateMapUrl();
+                        // Visual feedback
+                        this.style.background = 'radial-gradient(circle, #ff0000, #880000)';
+                        setTimeout(() => {
+                            this.style.background = 'radial-gradient(circle, #666666, #333333)';
+                        }, 200);
+                    }
+                });
+            }
+            
+            // Map Type Button
+            const mapTypeBtn = document.getElementById('map-type-btn');
+            if (mapTypeBtn) {
+                mapTypeBtn.addEventListener('click', function() {
+                    if (tvOn) {
+                        currentMapTypeIndex = (currentMapTypeIndex + 1) % mapTypes.length;
+                        currentMapType = mapTypes[currentMapTypeIndex];
+                        updateMapUrl();
+                        // Visual feedback
+                        this.style.background = 'radial-gradient(circle, #0088ff, #0066cc)';
+                        setTimeout(() => {
+                            this.style.background = 'radial-gradient(circle, #666666, #333333)';
+                        }, 200);
+                        
+                        // Show map type notification
+                        const channel = document.querySelector('.tv-channel');
+                        const originalText = channel.textContent;
+                        channel.textContent = 'MAP: ' + currentMapType.toUpperCase();
+                        setTimeout(() => {
+                            channel.textContent = originalText;
+                        }, 2000);
+                    }
+                });
+            }
+            
+            // Location Button
+            const locationBtn = document.getElementById('location-btn');
+            if (locationBtn) {
+                locationBtn.addEventListener('click', function() {
+                    if (tvOn) {
+                        if (navigator.geolocation) {
+                            // Visual feedback
+                            this.style.background = 'radial-gradient(circle, #ffaa00, #ff8800)';
+                            setTimeout(() => {
+                                this.style.background = 'radial-gradient(circle, #666666, #333333)';
+                            }, 200);
+                            
+                            navigator.geolocation.getCurrentPosition(
+                                function(position) {
+                                    const lat = position.coords.latitude;
+                                    const lng = position.coords.longitude;
+                                    
+                                    // Update map to user's location
+                                    const locationUrl = `https://maps.google.com/maps?q=${lat},${lng}&output=embed&t=m&z=${currentZoom}`;
+                                    mapIframe.src = locationUrl;
+                                    
+                                    // Show location notification
+                                    const channel = document.querySelector('.tv-channel');
+                                    const originalText = channel.textContent;
+                                    channel.textContent = 'YOUR LOCATION';
+                                    setTimeout(() => {
+                                        channel.textContent = originalText;
+                                    }, 3000);
+                                },
+                                function(error) {
+                                    alert('Unable to get your location. Please enable location services.');
+                                }
+                            );
+                        } else {
+                            alert('Geolocation is not supported by your browser.');
+                        }
+                    }
+                });
+            }
+            
+            // Add button press animations
+            const allButtons = document.querySelectorAll('.tv-control-btn');
+            allButtons.forEach(button => {
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'translateY(0) scale(0.95)';
+                });
+                
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+        
+        function showStoreDetails(storeId) {
+            // In a real app, this would fetch store data based on ID
+            // For now, we'll just show the modal with sample data
+            const modal = document.getElementById('store-modal');
+            modal.style.display = 'block';
+        }
+        
+        function openDirections(storeId) {
+            // In a real app, this would open directions to the specific store
+            // For now, we'll open generic directions
+            window.open('https://www.google.com/maps', '_blank');
+        }
+        
+        function filterStoresByCity(city) {
+            let searchQuery = 'Medical Stores Pharmacies';
+            let lat = 32.60783; // Default: Lakki Marwat
+            let lng = 70.91167;
+            let cityName = 'All Cities';
+            
+            // City-specific coordinates and search terms
+            switch(city.toLowerCase()) {
+                case 'lakki-marwat':
+                    searchQuery = 'Medical Stores Pharmacies Lakki Marwat Pakistan';
+                    lat = 32.60783;
+                    lng = 70.91167;
+                    cityName = 'Lakki Marwat';
+                    break;
+                case 'islamabad':
+                    searchQuery = 'Medical Stores Pharmacies Islamabad Pakistan';
+                    lat = 33.6844;
+                    lng = 73.0479;
+                    cityName = 'Islamabad';
+                    break;
+                case 'lahore':
+                    searchQuery = 'Medical Stores Pharmacies Lahore Pakistan';
+                    lat = 31.5204;
+                    lng = 74.3587;
+                    cityName = 'Lahore';
+                    break;
+                case 'karachi':
+                    searchQuery = 'Medical Stores Pharmacies Karachi Pakistan';
+                    lat = 24.8607;
+                    lng = 67.0011;
+                    cityName = 'Karachi';
+                    break;
+                case 'rawalpindi':
+                    searchQuery = 'Medical Stores Pharmacies Rawalpindi Pakistan';
+                    lat = 33.5651;
+                    lng = 73.0169;
+                    cityName = 'Rawalpindi';
+                    break;
+                case 'peshawar':
+                    searchQuery = 'Medical Stores Pharmacies Peshawar Pakistan';
+                    lat = 34.0151;
+                    lng = 71.5249;
+                    cityName = 'Peshawar';
+                    break;
+                case 'quetta':
+                    searchQuery = 'Medical Stores Pharmacies Quetta Pakistan';
+                    lat = 30.1798;
+                    lng = 66.9750;
+                    cityName = 'Quetta';
+                    break;
+                case 'multan':
+                    searchQuery = 'Medical Stores Pharmacies Multan Pakistan';
+                    lat = 30.1575;
+                    lng = 71.5249;
+                    cityName = 'Multan';
+                    break;
+                case 'faisalabad':
+                    searchQuery = 'Medical Stores Pharmacies Faisalabad Pakistan';
+                    lat = 31.4504;
+                    lng = 73.1350;
+                    cityName = 'Faisalabad';
+                    break;
+                default:
+                    searchQuery = 'Medical Stores Pharmacies Pakistan';
+                    cityName = 'All Cities';
+            }
+            
+            // Update map
+            updateMapWithSearch(lat, lng, searchQuery);
+            
+            // Update stores count (simulated)
+            const countElement = document.getElementById('stores-count');
+            if (countElement) {
+                const count = city === 'all' ? '12' : Math.floor(Math.random() * 8) + 3;
+                countElement.textContent = count;
+            }
+            
+            // Show notification
+            showSearchNotification(`Showing stores in ${cityName}`);
+            
+            console.log(`🏢 Filtering stores for: ${cityName}`);
+            console.log(`🗺️ Map updated to: ${lat}, ${lng}`);
+        }
+        
+        function setupHamburgerMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on a link
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+

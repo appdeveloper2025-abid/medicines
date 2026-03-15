@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHARMADICES - Your Medicine Information Hub</title>
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/theme-core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pills"></i>
+                <span>PHARMADICES</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="drug-database.html"><i class="fas fa-capsules"></i> Medicines</a></li>
+                <li><a href="pharmacy-locator.html"><i class="fas fa-map-marker-alt"></i> Medical Stores</a></li>
+                <li><a href="health-tracker.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="our-team.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Trusted <span class="highlight">Medicine</span> Guide</h1>
+                <div class="typing-container">
+                    <p>Search <span class="typed-text" id="typed-text"></span><span class="cursor">|</span></p>
+                </div>
+                <p class="hero-subtitle">Comprehensive, reliable, and up-to-date medicine information at your fingertips.</p>
+                
+                <div class="enhanced-search-container">
+                    <div class="enhanced-search-box">
+                        <div class="enhanced-search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <input type="text" class="enhanced-search-input" id="home-search" placeholder="Search for medicines by name, brand, or generic name...">
+                        <button class="enhanced-search-button" onclick="window.location.href='drug-database.html'">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    
+                    <div class="enhanced-search-filters">
+                        <div class="enhanced-filter-group">
+                            <label for="search-type"><i class="fas fa-filter"></i> Search In:</label>
+                            <select id="search-type" style="background-color:#000000;color:#ffffff;">
+                                <option value="all" style="background-color:#000000;color:#ffffff;">All Fields</option>
+                                <option value="name" style="background-color:#000000;color:#ffffff;">Medicine Name</option>
+                                <option value="brand" style="background-color:#000000;color:#ffffff;">Brand Name</option>
+                                <option value="generic" style="background-color:#000000;color:#ffffff;">Generic Name</option>
+                            </select>
+                        </div>
+                        
+                        <div class="enhanced-filter-group">
+                            <label for="medicine-type"><i class="fas fa-tag"></i> Type:</label>
+                            <select id="medicine-type" style="background-color:#000000;color:#ffffff;">
+                                <option value="all" style="background-color:#000000;color:#ffffff;">All Types</option>
+                                <option value="tablet" style="background-color:#000000;color:#ffffff;">Tablet</option>
+                                <option value="capsule" style="background-color:#000000;color:#ffffff;">Capsule</option>
+                                <option value="syrup" style="background-color:#000000;color:#ffffff;">Syrup</option>
+                                <option value="injection" style="background-color:#000000;color:#ffffff;">Injection</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="enhanced-search-suggestions">
+                        <a href="#" class="enhanced-suggestion-tag">Panadol</a>
+                        <a href="#" class="enhanced-suggestion-tag">Augmentin</a>
+                        <a href="#" class="enhanced-suggestion-tag">Paracetamol</a>
+                        <a href="#" class="enhanced-suggestion-tag">Aspirin</a>
+                        <a href="#" class="enhanced-suggestion-tag">Ibuprofen</a>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <h3>1000+</h3>
+                        <p>Medicines Database</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>24/7</h3>
+                        <p>Accessible Information</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>100%</h3>
+                        <p>Free Resource</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">What We Provide</h2>
+            <p class="section-subtitle">Comprehensive medicine information for healthcare professionals and patients</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Instant Search</h3>
+                    <p>Quickly find medicines by name, brand, or generic name with our powerful search engine.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3>Detailed Information</h3>
+                    <p>Complete details including uses, dosage, side effects, precautions, and interactions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Store Locator</h3>
+                    <p>Find medical stores and pharmacies across Pakistan, including Lakki Marwat.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety First</h3>
+                    <p>Important precautions, pregnancy safety information, and storage guidelines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <div class="container">
+            <h2 class="section-title">Quick Access</h2>
+            
+            <div class="links-grid">
+                <a href="drug-database.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-capsules"></i>
+                    </div>
+                    <h3>Browse Medicines</h3>
+                    <p>Explore our complete database of medicines</p>
+                </a>
+                
+                <a href="pharmacy-locator.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Find Stores</h3>
+                    <p>Locate medical stores near you</p>
+                </a>
+                
+                <a href="our-team.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3>About Us</h3>
+                    <p>Learn about our mission and team</p>
+                </a>
+                
+                <a href="our-team.html" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational Project</h3>
+                    <p>Learn about this educational initiative</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Banner -->
+    <section class="warning-banner">
+        <div class="container">
+            <div class="warning-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>IMPORTANT:</strong> Pharmadices is for informational purposes only and does not replace professional medical advice. Always consult a qualified healthcare provider before taking any medication.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-pills"></i>
+                        <span>PHARMADICES</span>
+                    </div>
+                    <p class="footer-description">A comprehensive, static medicine information website providing reliable drug information for healthcare professionals and patients.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="drug-database.html">Medicines Database</a></li>
+                        <li><a href="pharmacy-locator.html">Medical Stores</a></li>
+                        <li><a href="our-team.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Medicine Uses</a></li>
+                        <li><a href="#">Dosage Guidelines</a></li>
+                        <li><a href="#">Side Effects</a></li>
+                        <li><a href="#">Drug Interactions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-graduation-cap"></i> GPGC Lakki Marwat</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lakki Marwat, KPK, Pakistan</p>
+                    <p><i class="fas fa-envelope"></i> Educational Project</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PHARMADICES. All rights reserved. | Educational Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/text-animate.js"></script>
+    <script src="assets/js/suggest.js"></script>
+</body>
+</html>

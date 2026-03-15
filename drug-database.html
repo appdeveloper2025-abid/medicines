@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines Database | PHARMADICES</title>
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/theme-core.css">
+    <link rel="stylesheet" href="assets/css/search-panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pills"></i>
+                <span>PHARMADICES</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="drug-database.html" class="active"><i class="fas fa-capsules"></i> Medicines</a></li>
+                <li><a href="pharmacy-locator.html"><i class="fas fa-map-marker-alt"></i> Medical Stores</a></li>
+                <li><a href="health-tracker.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="our-team.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Medicines Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Medicines Database</h1>
+                <p class="page-subtitle">Search and explore comprehensive information about 1000+ medicines</p>
+                
+                <!-- Enhanced Search Section -->
+                <div class="enhanced-search-container">
+                    <div class="page-search-title">
+                        <i class="fas fa-pills"></i> Medicine Database Search
+                    </div>
+                    <div class="enhanced-search-box">
+                        <div class="enhanced-search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <input type="text" class="enhanced-search-input" id="medicine-search" placeholder="Search by medicine name, brand, or generic name...">
+                        <button class="enhanced-search-button" id="search-btn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    
+                    <div class="enhanced-search-filters">
+                        <div class="enhanced-filter-group">
+                            <label for="search-type"><i class="fas fa-filter"></i> Search In:</label>
+                            <select id="search-type" style="background-color:#000000;color:#ffffff;">
+                                <option value="all" style="background-color:#000000;color:#ffffff;">All Fields</option>
+                                <option value="name" style="background-color:#000000;color:#ffffff;">Medicine Name</option>
+                                <option value="brand" style="background-color:#000000;color:#ffffff;">Brand Name</option>
+                                <option value="generic" style="background-color:#000000;color:#ffffff;">Generic Name</option>
+                                <option value="uses" style="background-color:#000000;color:#ffffff;">Uses</option>
+                            </select>
+                        </div>
+                        
+                        <div class="enhanced-filter-group">
+                            <label for="medicine-type"><i class="fas fa-tag"></i> Medicine Type:</label>
+                            <select id="medicine-type" style="background-color:#000000;color:#ffffff;">
+                                <option value="all" style="background-color:#000000;color:#ffffff;">All Types</option>
+                                <option value="tablet" style="background-color:#000000;color:#ffffff;">Tablet</option>
+                                <option value="capsule" style="background-color:#000000;color:#ffffff;">Capsule</option>
+                                <option value="syrup" style="background-color:#000000;color:#ffffff;">Syrup</option>
+                                <option value="injection" style="background-color:#000000;color:#ffffff;">Injection</option>
+                                <option value="ointment" style="background-color:#000000;color:#ffffff;">Ointment</option>
+                                <option value="drops" style="background-color:#000000;color:#ffffff;">Drops</option>
+                            </select>
+                        </div>
+                        
+                        <button id="clear-filters" class="enhanced-suggestion-tag">
+                            <i class="fas fa-times"></i> Clear Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Medicines Listing -->
+    <section class="medicines-section">
+        <div class="container">
+            <div class="medicines-container">
+                <!-- Loading State -->
+                <div id="loading-state" class="loading-state">
+                    <div class="loading-spinner">
+                        <i class="fas fa-pills fa-spin"></i>
+                    </div>
+                    <p>Loading medicines database...</p>
+                </div>
+                
+                <!-- No Results State -->
+                <div id="no-results" class="no-results-state" style="display: none;">
+                    <i class="fas fa-search fa-3x"></i>
+                    <h3>No Medicines Found</h3>
+                    <p>Try adjusting your search or filters to find what you're looking for.</p>
+                </div>
+                
+                <!-- Medicines Grid -->
+                <div id="medicines-grid" class="medicines-grid">
+                    <!-- Medicine cards will be dynamically inserted here -->
+                </div>
+                
+                <!-- Pagination -->
+                <div id="pagination" class="pagination" style="display: none;">
+                    <button id="prev-page" class="page-btn" disabled>
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <div class="page-numbers" id="page-numbers"></div>
+                    <button id="next-page" class="page-btn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section class="quick-info">
+        <div class="container">
+            <h2 class="section-title">Understanding Medicine Information</h2>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-prescription-bottle-alt"></i>
+                    </div>
+                    <h3>Generic vs Brand</h3>
+                    <p>Generic medicines contain the same active ingredients as brand-name drugs but are usually more affordable.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Side Effects</h3>
+                    <p>Most medicines can cause side effects. Always report unusual symptoms to your healthcare provider.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Drug Interactions</h3>
+                    <p>Some medicines can interact with each other, foods, or supplements. Always inform your doctor about all medications you're taking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Banner -->
+    <section class="warning-banner">
+        <div class="container">
+            <div class="warning-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>IMPORTANT:</strong> This information is for educational purposes only. Always consult a qualified healthcare provider before taking any medication. Do not self-medicate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-pills"></i>
+                        <span>PHARMADICES</span>
+                    </div>
+                    <p class="footer-description">A comprehensive, static medicine information website providing reliable drug information for healthcare professionals and patients.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="drug-database.html">Medicines Database</a></li>
+                        <li><a href="pharmacy-locator.html">Medical Stores</a></li>
+                        <li><a href="our-team.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Medicine Uses</a></li>
+                        <li><a href="#">Dosage Guidelines</a></li>
+                        <li><a href="#">Side Effects</a></li>
+                        <li><a href="#">Drug Interactions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-graduation-cap"></i> GPGC Lakki Marwat</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lakki Marwat, KPK, Pakistan</p>
+                    <p><i class="fas fa-envelope"></i> Educational Project</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year">2023</span> PHARMADICES. All rights reserved. | Educational Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Medicine Detail Modal -->
+    <div id="medicine-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Medicine Details</h2>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Medicine details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/filter-engine.js"></script>
+    <script src="assets/js/suggest.js"></script>
+    <script src="assets/js/saved-items.js"></script>
+    <script src="assets/js/print-view.js"></script>
+    <script src="assets/js/data-export.js"></script>
+    <script src="assets/js/deep-filter.js"></script>
+    <script src="assets/js/shortcuts.js"></script>
+    <script src="assets/js/schedule.js"></script>
+    <script src="assets/js/interactions.js"></script>
+    <script src="assets/js/dose-calc.js"></script>
+    <script src="assets/js/ratings.js"></script>
+    <script src="assets/js/compare.js"></script>
+</body>
+</html>

@@ -1,0 +1,989 @@
+/* Fixed Ultra Water Theme - Black Fonts & Maximum Transparency */
+
+/* WHITE FONTS FOR BETTER LOOK - Most text white except important elements */
+* {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.3px !important;
+}
+
+p, span, div, a, li, td, th, label, textarea, select {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+/* Input fields - black text for readability */
+input {
+    color: #000000 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+/* Button text - white */
+button {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 800 !important;
+}
+
+/* Logo text - white */
+.hero-title, .navbar .logo span {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+    font-weight: 900 !important;
+}
+
+/* Navigation links - white text */
+.nav-menu a {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+}
+
+/* MAXIMUM TRANSPARENCY - Ultra Light Sections */
+.navbar, .hero, .features, .quick-links, .warning-banner, .footer,
+.page-header, .dashboard-header, .contact-hero, .disclaimer-hero, .stores-header,
+.main-content, .medicines-section, .stores-section, .contact-section, .disclaimer-section,
+.contact-main, .disclaimer-main, .developer-section, .agreement-section {
+    background: rgba(255, 255, 255, 0.005) !important;
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+}
+
+/* NAVBAR - Sticky with black bottom border, NO backdrop-filter (causes Android blur bug) */
+.navbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10000 !important;
+    border-bottom: 2px solid #000000 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    will-change: auto !important;
+}
+
+/* Cards - More Transparent */
+.card, .medicine-card, .store-card, .dashboard-card, .contact-form-card, 
+.contact-info-card, .disclaimer-card, .feature-card, .link-card, .stat-card,
+.developer-card, .search-box, .modal, .modal-content, .team-section, .faq-section,
+.project-info-card, .team-card, .emergency-card, .info-item, .team-member,
+.insight-item, .activity-card, .favorites-card, .insights-card, .actions-card,
+.tips-card, .schedule-card {
+    background: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: blur(1px) !important;
+    -webkit-backdrop-filter: blur(1px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+}
+
+/* Form Elements - Minimal Background */
+input, textarea, .form-control, .search-input, .filter-input {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+select {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    border: 1px solid rgba(255, 102, 0, 0.5) !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+select option {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #333333 !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+}
+
+/* ORANGE SEARCH BUTTONS */
+.btn, .btn-primary, .btn-secondary, .action-btn, .submit-btn, .agree-btn,
+button, .search-box button, .enhanced-search-button, .search-button {
+    background: #ff6600 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 2px solid #ff4400 !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 800 !important;
+}
+
+.btn:hover, .btn-primary:hover, .search-box button:hover, 
+.enhanced-search-button:hover, .search-button:hover {
+    background: #ff4400 !important;
+    border-color: #ff2200 !important;
+}
+
+/* Navigation Menu */
+.nav-menu a {
+    background: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+/* Tables and Lists - Ultra Transparent */
+.table, .medicines-grid, .stores-grid, .list-group,
+.autocomplete-suggestions, .autocomplete-suggestion {
+    background: rgba(255, 255, 255, 0.008) !important;
+    backdrop-filter: blur(1px) !important;
+    -webkit-backdrop-filter: blur(1px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: none !important;
+}
+
+/* Badges and Tags - Minimal Background */
+.badge, .tag, .pill, .label, .sugg-badge {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+/* Search Box - Ultra Minimal */
+.search-box {
+    background: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: blur(1px) !important;
+    -webkit-backdrop-filter: blur(1px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+.search-box:hover, .search-box:focus-within {
+    background: rgba(255, 255, 255, 0.02) !important;
+    box-shadow: none !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ===== ENHANCED SEARCH CONTAINER - HOME & MEDICINES PAGES ===== */
+.enhanced-search-container {
+    background: rgba(0, 0, 0, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    margin: 20px auto !important;
+    max-width: 750px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+}
+
+/* Search row: icon + input + button */
+.enhanced-search-box {
+    display: flex !important;
+    align-items: center !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 50px !important;
+    overflow: hidden !important;
+    margin-bottom: 16px !important;
+}
+
+.enhanced-search-icon {
+    padding: 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #ff6600 !important;
+    font-size: 1.1rem !important;
+    flex-shrink: 0 !important;
+}
+
+.enhanced-search-icon i {
+    color: #ff6600 !important;
+    text-shadow: none !important;
+}
+
+.enhanced-search-input {
+    flex: 1 !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    padding: 14px 10px !important;
+    font-weight: 500 !important;
+    text-shadow: none !important;
+    min-width: 0 !important;
+}
+
+.enhanced-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+    text-shadow: none !important;
+}
+
+.enhanced-search-button {
+    background: #ff6600 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 14px 24px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    border-radius: 0 50px 50px 0 !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    transition: background 0.2s ease !important;
+}
+
+.enhanced-search-button:hover {
+    background: #ff4400 !important;
+}
+
+.enhanced-search-button i {
+    color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+/* Filters row */
+.enhanced-search-filters {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 14px !important;
+}
+
+.enhanced-filter-group {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex: 1 !important;
+    min-width: 160px !important;
+}
+
+.enhanced-filter-group label {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+.enhanced-filter-group label i {
+    color: #ff6600 !important;
+    text-shadow: none !important;
+}
+
+.enhanced-filter-group select {
+    flex: 1 !important;
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 102, 0, 0.6) !important;
+    border-radius: 8px !important;
+    padding: 8px 10px !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    text-shadow: none !important;
+    outline: none !important;
+}
+
+/* Suggestion tags row */
+.enhanced-search-suggestions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    align-items: center !important;
+}
+
+.enhanced-suggestion-tag {
+    background: rgba(255, 102, 0, 0.25) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 102, 0, 0.5) !important;
+    border-radius: 20px !important;
+    padding: 6px 14px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
+    transition: background 0.2s ease, border-color 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+.enhanced-suggestion-tag:hover {
+    background: #ff6600 !important;
+    border-color: #ff6600 !important;
+    color: #ffffff !important;
+}
+
+.enhanced-suggestion-tag i {
+    color: #ffffff !important;
+    text-shadow: none !important;
+    font-size: 0.8rem !important;
+}
+
+/* Page search title label */
+.page-search-title {
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 14px !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.page-search-title i {
+    color: #ff6600 !important;
+    text-shadow: none !important;
+}
+
+/* Mobile adjustments for search */
+@media screen and (max-width: 576px) {
+    .enhanced-search-container {
+        padding: 16px !important;
+        border-radius: 12px !important;
+    }
+    .enhanced-search-box {
+        flex-direction: column !important;
+        border-radius: 12px !important;
+        overflow: visible !important;
+    }
+    .enhanced-search-input {
+        width: 100% !important;
+        border-radius: 8px !important;
+        background: rgba(255,255,255,0.15) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        margin-bottom: 8px !important;
+        padding: 12px 14px !important;
+    }
+    .enhanced-search-button {
+        width: 100% !important;
+        border-radius: 8px !important;
+        justify-content: center !important;
+        padding: 12px !important;
+    }
+    .enhanced-filter-group {
+        min-width: 100% !important;
+    }
+    .enhanced-search-filters {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+}
+
+/* Remove all glowing and shadow effects */
+.glow-on-hover::after,
+.feature-icon,
+.link-icon,
+.stat-card,
+.developer-card {
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* Mobile Responsive - White text */
+@media (max-width: 768px) {
+    .navbar, .hero, .features, .quick-links, .warning-banner, .footer {
+        background: rgba(255, 255, 255, 0.003) !important;
+        backdrop-filter: blur(1px) !important;
+        -webkit-backdrop-filter: blur(1px) !important;
+    }
+    
+    * {
+        color: #ffffff !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+        font-weight: 700 !important;
+    }
+    
+    input {
+        color: #000000 !important;
+        text-shadow: none !important;
+        font-weight: 700 !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+        font-weight: 900 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .card, .medicine-card, .store-card, .search-box {
+        background: rgba(255, 255, 255, 0.005) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    * {
+        color: #ffffff !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+        font-weight: 800 !important;
+    }
+    
+    input, textarea, select {
+        background: rgba(255, 255, 255, 0.05) !important;
+        color: #000000 !important;
+        text-shadow: none !important;
+        font-weight: 800 !important;
+    }
+}
+
+/* Remove floating/water animations but KEEP transitions & transforms for UI interactions */
+.feature-card, .link-card, .stat-card, .developer-card,
+.logo, .hero-title, .search-box, .search-hint,
+.search-box i, .feature-icon, .warning-banner,
+.warning-content i, .autocomplete-suggestions {
+    animation: none !important;
+}
+
+/* Static background - no movement */
+body {
+    background: 
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3840&h=2160&auto=format&fit=crop&ixlib=rb-4.0.3') center center/cover no-repeat fixed;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Remove any moving elements */
+body::before, body::after {
+    display: none !important;
+}
+
+/* Disable all keyframe animations */
+@keyframes waterFlow { display: none; }
+@keyframes waterBubble { display: none; }
+@keyframes floatNav { display: none; }
+@keyframes float { display: none; }
+@keyframes floatTitle { display: none; }
+@keyframes floatSearch { display: none; }
+@keyframes waterPulse { display: none; }
+@keyframes floatHint { display: none; }
+@keyframes floatCard { display: none; }
+@keyframes floatFeature { display: none; }
+@keyframes rotateIcon { display: none; }
+@keyframes floatCircle { display: none; }
+@keyframes floatLink { display: none; }
+@keyframes floatBanner { display: none; }
+@keyframes warningPulse { display: none; }
+@keyframes floatDeveloper { display: none; }
+@keyframes slideDown { display: none; }
+@keyframes modalFloat { display: none; }
+@keyframes floatElement { display: none; }
+@keyframes pulseIcon { display: none; }
+@keyframes blink { display: none; }
+
+/* Force remove any remaining blue colors */
+.primary-color, .text-primary, .highlight, .accent-color {
+    color: #000000 !important;
+}
+
+/* Icons - white color */
+i, .fas, .far, .fab {
+    color: #ffffff !important;
+}
+
+/* Logo icon - white */
+.navbar .logo i {
+    color: #ffffff !important;
+}
+
+/* Remove backdrop filters on small screens for performance */
+@media screen and (max-width: 480px) {
+    section, header, footer, .card, .modal-content {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+/* ===== FULLY RESPONSIVE NAVBAR - ALL SCREEN SIZES ===== */
+
+/* Desktop (>992px): horizontal menu, hide hamburger */
+@media screen and (min-width: 993px) {
+    .hamburger {
+        display: none !important;
+    }
+    .nav-menu {
+        display: flex !important;
+        position: static !important;
+        flex-direction: row !important;
+        background: transparent !important;
+        width: auto !important;
+        height: auto !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        right: auto !important;
+        top: auto !important;
+    }
+    .nav-menu li {
+        margin: 0 0 0 10px !important;
+        width: auto !important;
+    }
+    .nav-menu a {
+        background: rgba(255,255,255,0.08) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255,255,255,0.15) !important;
+        padding: 10px 16px !important;
+        border-radius: 8px !important;
+        font-size: 0.95rem !important;
+    }
+    .nav-menu a:hover, .nav-menu a.active {
+        background: #ff6600 !important;
+        border-color: #ff6600 !important;
+        color: #ffffff !important;
+    }
+}
+
+/* Tablet & Mobile (<=992px): show hamburger, hide menu by default */
+@media screen and (max-width: 992px) {
+    /* Navbar bar itself */
+    .navbar {
+        background: #000000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        border-bottom: 2px solid #ff6600 !important;
+        padding: 10px 0 !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 10000 !important;
+        pointer-events: auto !important;
+        transform: translateZ(0) !important;
+    }
+
+    /* Show hamburger - large touch target for Android */
+    .hamburger {
+        display: flex !important;
+        flex-direction: column !important;
+        cursor: pointer !important;
+        padding: 10px !important;
+        z-index: 10000 !important;
+        background: transparent !important;
+        border: none !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        -webkit-tap-highlight-color: transparent !important;
+        touch-action: manipulation !important;
+    }
+    .hamburger span {
+        display: block !important;
+        width: 26px !important;
+        height: 3px !important;
+        background: #ffffff !important;
+        margin: 4px 0 !important;
+        border-radius: 3px !important;
+        opacity: 1 !important;
+        transition: all 0.3s ease !important;
+        pointer-events: none !important;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px) !important;
+        background: #ff6600 !important;
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0 !important;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px) !important;
+        background: #ff6600 !important;
+    }
+
+    /* Dark overlay when menu is open */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 9998;
+        pointer-events: none;
+    }
+    .nav-overlay.active {
+        display: block;
+        pointer-events: auto;
+    }
+
+    /* Hidden nav menu — slides in from LEFT (standard mobile behavior) */
+    .nav-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important;
+        right: auto !important;
+        width: 280px !important;
+        height: 100vh !important;
+        background: #000000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        padding: 80px 15px 30px !important;
+        border-right: 3px solid #ff6600 !important;
+        border-left: none !important;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.8) !important;
+        z-index: 9999 !important;
+        overflow-y: auto !important;
+        transition: left 0.3s ease !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+    }
+    .nav-menu.active {
+        left: 0 !important;
+        right: auto !important;
+    }
+    .nav-menu li {
+        margin: 6px 0 !important;
+        width: 100% !important;
+    }
+    .nav-menu a {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding: 14px 18px !important;
+        background: #1a1a1a !important;
+        color: #ffffff !important;
+        border: 1px solid #333333 !important;
+        border-radius: 10px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        text-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        cursor: pointer !important;
+    }
+    .nav-menu a:hover, .nav-menu a.active {
+        background: #ff6600 !important;
+        border-color: #ff6600 !important;
+        color: #ffffff !important;
+    }
+    .nav-menu a i {
+        color: #ffffff !important;
+        font-size: 1.1rem !important;
+        width: 20px !important;
+        text-align: center !important;
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 1.2rem !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: #ff6600 !important;
+        padding: 5px 0 !important;
+    }
+    .logo span, .logo i {
+        color: #ff6600 !important;
+    }
+}
+
+/* Small phones (<=576px): full-width menu */
+@media screen and (max-width: 576px) {
+    .nav-menu {
+        width: 100vw !important;
+        left: -100vw !important;
+        right: auto !important;
+        border-right: none !important;
+        border-top: 3px solid #ff6600 !important;
+    }
+    .nav-menu.active {
+        left: 0 !important;
+        right: auto !important;
+    }
+}
+
+
+/* ===== TABLET & MOBILE (<=992px) - SAME THEME AS HOME PAGE DESKTOP ===== */
+@media screen and (max-width: 992px) {
+
+    /* BODY - same mountain background as desktop home page */
+    html, body {
+        background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3840&h=2160&auto=format&fit=crop&ixlib=rb-4.0.3') center center / cover no-repeat !important;
+        background-attachment: scroll !important;
+        min-height: 100vh !important;
+    }
+    body::before, body::after {
+        display: none !important;
+    }
+
+    /* ALL SECTIONS - same ultra-transparent glass as desktop */
+    section, header, footer, main,
+    .hero, .features, .quick-links, .warning-banner,
+    .stores-header, .map-section, .stores-list-section,
+    .city-info, .important-notice, .emergency-section,
+    .dashboard-header, .dashboard-main, .dashboard-section,
+    .medicines-section, .medicines-header, .search-section,
+    .disclaimer-hero, .disclaimer-main, .disclaimer-section,
+    .about-hero, .about-main, .about-section,
+    .page-header, .main-content, .content-section,
+    .developer-section, .agreement-section,
+    .team-section, .faq-section {
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* FOOTER */
+    footer, .footer {
+        background: rgba(0, 0, 0, 0.6) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* CARDS - same glass style as desktop */
+    .card, .medicine-card, .store-card, .dashboard-card,
+    .feature-card, .link-card, .stat-card, .developer-card,
+    .contact-form-card, .contact-info-card, .disclaimer-card,
+    .emergency-card, .notice-content, .city-card,
+    .insight-item, .activity-card, .favorites-card,
+    .insights-card, .actions-card, .tips-card, .schedule-card,
+    .team-card, .info-item, .team-member, .warning-content,
+    .search-box, .enhanced-search-container, .stores-search-container,
+    .enhanced-city-filter, .tv-map-container, .project-info-card {
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* CARD HEADERS & FOOTERS */
+    .store-card-header, .store-card-footer,
+    .card-header, .card-footer {
+        background: rgba(0, 0, 0, 0.25) !important;
+        border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* MODAL */
+    .store-modal-content, .modal, .modal-content,
+    .medicine-modal, .medicine-modal-content {
+        background: rgba(0, 0, 0, 0.85) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    .store-modal-header, .store-modal-body,
+    .modal-header, .modal-body, .modal-footer {
+        background: transparent !important;
+        border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* ALL TEXT - white, clearly visible over background image */
+    * {
+        color: #ffffff !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff !important;
+        font-weight: 800 !important;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+    }
+    p, span, li, td, th, label {
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
+    }
+    a {
+        color: #ffffff !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
+    }
+    i, .fas, .far, .fab, .fa {
+        color: #ffffff !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
+    }
+
+    /* INPUT - white bg, black text (readable) */
+    input, textarea {
+        background: rgba(255, 255, 255, 0.9) !important;
+        color: #000000 !important;
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        text-shadow: none !important;
+    }
+    input::placeholder, textarea::placeholder {
+        color: #444444 !important;
+        text-shadow: none !important;
+    }
+
+    /* SELECT - black bg, white text */
+    select {
+        background: #000000 !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        text-shadow: none !important;
+    }
+    select option {
+        background: #000000 !important;
+        color: #ffffff !important;
+    }
+
+    /* BUTTONS - orange same as desktop */
+    button, .btn, .btn-primary, .find-btn,
+    .stores-search-button, .enhanced-search-button,
+    .view-store-btn, .action-btn.get-directions {
+        background: #ff6600 !important;
+        color: #ffffff !important;
+        border: 2px solid #ff4400 !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    }
+
+    /* SECONDARY BUTTONS */
+    .directions-btn, .location-btn, .action-btn.call-store {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* BADGES & TAGS */
+    .emergency-badge {
+        background: #ff5252 !important;
+        color: #ffffff !important;
+        text-shadow: none !important;
+    }
+    .store-type.pharmacy { background: rgba(46,125,50,0.8) !important; color: #ffffff !important; }
+    .store-type.hospital { background: rgba(198,40,40,0.8) !important; color: #ffffff !important; }
+    .store-type.store    { background: rgba(21,101,192,0.8) !important; color: #ffffff !important; }
+    .service-tag, .store-suggestion-tag, .enhanced-suggestion-tag {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    }
+
+    /* AUTOCOMPLETE */
+    .autocomplete-suggestions {
+        background: rgba(0, 0, 0, 0.9) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    .autocomplete-suggestion {
+        background: rgba(0, 0, 0, 0.8) !important;
+        color: #ffffff !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .autocomplete-suggestion:hover {
+        background: #ff6600 !important;
+    }
+
+    /* STORES COUNT */
+    .stores-count {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+    }
+    .stores-count span { color: #ffffff !important; }
+
+    /* CITY HEADER */
+    .city-header {
+        background: rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* FOOTER LINKS */
+    .footer-links a { color: #ffffff !important; }
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+}
+
+/* Print Styles - Remove all transparency */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        text-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+/* ===== MASTER WHITE BACKGROUND KILLER - catches any remaining white/near-white backgrounds ===== */
+/* Targets inline styles and any CSS that sets solid or near-solid white backgrounds */
+*:not(input):not(textarea):not(body):not(html) {
+    background-color: unset;
+}
+
+/* Override any element with inline white background */
+[style*="background: white"],
+[style*="background:white"],
+[style*="background: #fff"],
+[style*="background:#fff"],
+[style*="background: #ffffff"],
+[style*="background:#ffffff"],
+[style*="background-color: white"],
+[style*="background-color:white"],
+[style*="background-color: #fff"],
+[style*="background-color:#fff"],
+[style*="background-color: #ffffff"],
+[style*="background-color:#ffffff"],
+[style*="background-color: rgb(255, 255, 255)"],
+[style*="background-color: rgb(255,255,255)"],
+[style*="background: rgb(255, 255, 255)"],
+[style*="background: #f8f9fa"],
+[style*="background-color: #f8f9fa"],
+[style*="background: #f0f0f0"],
+[style*="background-color: #f0f0f0"] {
+    background: rgba(255, 255, 255, 0.08) !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+}
+
+/* Notification popup - keep readable */
+.notification {
+    background: rgba(20, 20, 20, 0.95) !important;
+    background-color: rgba(20, 20, 20, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+}

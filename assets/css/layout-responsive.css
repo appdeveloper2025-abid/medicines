@@ -1,0 +1,930 @@
+/* ===== MOBILE RESPONSIVE CSS FOR MEDICAL STORES PAGE ===== */
+
+/* Mobile-First Approach - Base styles for mobile */
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 95% !important;
+        padding: 0 15px !important;
+    }
+}
+
+/* Tablet Styles */
+@media screen and (max-width: 768px) {
+    /* Ensure background image is visible on tablets */
+    body {
+        background-image: url('../images/nature-bg.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-attachment: fixed !important;
+        background-repeat: no-repeat !important;
+    }
+    
+    .container {
+        max-width: 100% !important;
+        padding: 0 10px !important;
+    }
+    
+    /* Navbar Responsive */
+    .navbar {
+        padding: 10px 0 !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 10000 !important;
+        background: #000000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 2px solid #ff6600 !important;
+    }
+    
+    .nav-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 15px !important;
+    }
+    
+    .logo {
+        font-size: 1.3rem !important;
+        color: #ff6600 !important;
+        text-decoration: none !important;
+        font-weight: 800 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+    
+    .logo i {
+        font-size: 1.5rem !important;
+        color: #ff6600 !important;
+    }
+    
+    /* Hamburger Menu */
+    .hamburger {
+        display: flex !important;
+        flex-direction: column !important;
+        cursor: pointer !important;
+        padding: 5px !important;
+        z-index: 1001 !important;
+    }
+    
+    .hamburger span {
+        width: 25px !important;
+        height: 3px !important;
+        background: #ffffff !important;
+        margin: 3px 0 !important;
+        transition: all 0.3s ease !important;
+        border-radius: 2px !important;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px) !important;
+        background: #ff6600 !important;
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0 !important;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px) !important;
+        background: #ff6600 !important;
+    }
+    
+    /* Mobile Navigation Menu */
+    .nav-menu {
+        position: fixed !important;
+        top: 70px !important;
+        right: -100% !important;
+        width: 280px !important;
+        height: calc(100vh - 70px) !important;
+        background: rgba(0, 0, 0, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding: 30px 0 !important;
+        transition: right 0.3s ease !important;
+        border-left: 2px solid #ff6600 !important;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5) !important;
+        z-index: 999 !important;
+        overflow-y: auto !important;
+    }
+    
+    .nav-menu.active {
+        right: 0 !important;
+    }
+    
+    .nav-menu li {
+        margin: 15px 0 !important;
+        width: 90% !important;
+    }
+    
+    .nav-menu a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        padding: 15px 20px !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
+        border-radius: 12px !important;
+        transition: all 0.3s ease !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        background: linear-gradient(135deg, #ff6600, #ff8533) !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3) !important;
+        border-color: #ff6600 !important;
+    }
+    
+    .nav-menu a i {
+        font-size: 1.2rem !important;
+        color: inherit !important;
+    }
+    
+    /* Header Responsive */
+    .stores-header {
+        padding: 40px 0 30px !important;
+        background: linear-gradient(135deg, rgba(26, 115, 232, 0.9) 0%, rgba(13, 71, 161, 0.9) 100%) !important;
+    }
+    
+    .stores-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 15px !important;
+        text-align: center !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+    }
+    
+    .stores-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 25px !important;
+        text-align: center !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    /* Search Container Responsive */
+    .stores-search-container {
+        margin: 0 10px 20px 10px !important;
+        padding: 20px 15px !important;
+        border-radius: 20px !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .stores-search-title {
+        font-size: 1.2rem !important;
+        margin-bottom: 15px !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+    
+    .stores-search-box {
+        flex-direction: column !important;
+        border-radius: 15px !important;
+        overflow: hidden !important;
+    }
+    
+    .stores-search-icon {
+        padding: 15px !important;
+        justify-content: center !important;
+        border-radius: 15px 15px 0 0 !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .stores-search-input {
+        padding: 18px 15px !important;
+        font-size: 16px !important;
+        text-align: center !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+    }
+    
+    .stores-search-input::placeholder {
+        text-align: center !important;
+        font-size: 14px !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+    
+    .stores-search-button {
+        padding: 18px 20px !important;
+        font-size: 1rem !important;
+        border-radius: 0 0 15px 15px !important;
+        justify-content: center !important;
+        background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%) !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+    }
+    
+    .stores-search-suggestions {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-top: 15px !important;
+    }
+    
+    .store-suggestion-tag {
+        width: 100% !important;
+        max-width: 280px !important;
+        justify-content: center !important;
+        padding: 12px 16px !important;
+        font-size: 0.9rem !important;
+        text-align: center !important;
+    }
+    
+    /* Enhanced City Filter Responsive */
+    .enhanced-city-filter {
+        margin: 15px 10px 0 10px !important;
+        padding: 20px 15px !important;
+        border-radius: 15px !important;
+    }
+    
+    .filter-container {
+        flex-direction: column !important;
+        gap: 12px !important;
+        align-items: stretch !important;
+    }
+    
+    .filter-input {
+        min-width: 100% !important;
+        padding: 0 12px !important;
+        border-radius: 10px !important;
+    }
+    
+    .filter-input select {
+        padding: 15px 8px !important;
+        font-size: 16px !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+    }
+    
+    .find-btn, .location-btn {
+        width: 100% !important;
+        padding: 15px 20px !important;
+        justify-content: center !important;
+        font-size: 1rem !important;
+        border-radius: 10px !important;
+    }
+    
+    /* TV Map Container Responsive */
+    .tv-map-container {
+        margin: 20px 10px !important;
+        padding: 20px 20px 70px 20px !important;
+        border-radius: 20px !important;
+    }
+    
+    .tv-map-screen {
+        height: 300px !important;
+        border-radius: 10px !important;
+    }
+    
+    .tv-controls-panel {
+        bottom: 10px !important;
+        gap: 10px !important;
+        padding: 12px 20px !important;
+        border-radius: 20px !important;
+    }
+    
+    .tv-control-btn {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 14px !important;
+    }
+    
+    .tv-power-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 18px !important;
+    }
+    
+    .tv-brand {
+        top: -30px !important;
+        font-size: 0.8rem !important;
+        padding: 6px 15px !important;
+    }
+    
+    .tv-channel {
+        top: 12px !important;
+        right: 12px !important;
+        font-size: 10px !important;
+        padding: 4px 8px !important;
+    }
+    
+    .tv-volume {
+        bottom: 12px !important;
+        left: 12px !important;
+        width: 80px !important;
+        height: 6px !important;
+    }
+    
+    /* Stores Grid Responsive */
+    .stores-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .store-card {
+        margin: 0 10px !important;
+        border-radius: 15px !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .store-card-footer {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .view-store-btn, .directions-btn {
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 0.95rem !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Cities Grid Responsive */
+    .cities-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        margin-top: 30px !important;
+    }
+    
+    .city-card {
+        margin: 0 10px !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .city-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+    
+    /* Emergency and Notice Sections */
+    .emergency-card, .notice-content {
+        flex-direction: column !important;
+        text-align: center !important;
+        margin: 0 10px !important;
+        padding: 20px 15px !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    /* Modal Responsive */
+    .store-modal-content {
+        margin: 20px 10px !important;
+        border-radius: 15px !important;
+        max-width: calc(100vw - 20px) !important;
+    }
+    
+    .store-modal-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 15px !important;
+        padding: 20px !important;
+    }
+    
+    .store-modal-body {
+        padding: 20px !important;
+        max-height: 60vh !important;
+    }
+    
+    .detail-row {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .store-detail-actions {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    
+    .action-btn {
+        width: 100% !important;
+        padding: 15px !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Footer Responsive */
+    .footer {
+        background: rgba(0, 0, 0, 0.95) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        text-align: center !important;
+    }
+    
+    .footer-col {
+        padding: 0 15px !important;
+    }
+    
+    .footer-logo {
+        justify-content: center !important;
+        margin-bottom: 15px !important;
+    }
+}
+
+/* Mobile Phone Styles (Android & iOS) */
+@media screen and (max-width: 576px) {
+    /* Ensure background image is always visible on mobile */
+    body {
+        background-image: url('../images/nature-bg.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-attachment: scroll !important; /* Better for mobile performance */
+        background-repeat: no-repeat !important;
+        min-height: 100vh !important;
+    }
+    
+    /* Prevent horizontal scroll */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+    
+    .container {
+        max-width: 100% !important;
+        padding: 0 5px !important;
+    }
+    
+    /* Mobile Navbar */
+    .navbar {
+        padding: 8px 0 !important;
+        background: rgba(0, 0, 0, 0.98) !important;
+    }
+    
+    .nav-container {
+        padding: 0 10px !important;
+    }
+    
+    .logo {
+        font-size: 1.1rem !important;
+    }
+    
+    .logo i {
+        font-size: 1.3rem !important;
+    }
+    
+    .nav-menu {
+        top: 60px !important;
+        width: 100vw !important;
+        right: -100vw !important;
+        height: calc(100vh - 60px) !important;
+        padding: 20px 0 !important;
+    }
+    
+    .nav-menu.active {
+        right: 0 !important;
+    }
+    
+    .nav-menu li {
+        width: 95% !important;
+        margin: 10px 0 !important;
+    }
+    
+    .nav-menu a {
+        padding: 12px 15px !important;
+        font-size: 1rem !important;
+        border-radius: 10px !important;
+    }
+    
+    /* Mobile Header */
+    .stores-header {
+        padding: 30px 0 25px !important;
+    }
+    
+    .stores-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 10px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .stores-subtitle {
+        font-size: 0.9rem !important;
+        margin-bottom: 20px !important;
+        line-height: 1.4 !important;
+        padding: 0 10px !important;
+    }
+    
+    /* Mobile Search */
+    .stores-search-container {
+        margin: 0 5px 15px 5px !important;
+        padding: 15px 10px !important;
+        border-radius: 15px !important;
+    }
+    
+    .stores-search-title {
+        font-size: 1.1rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .stores-search-input {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 16px 12px !important;
+    }
+    
+    .stores-search-button {
+        padding: 16px 15px !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .store-suggestion-tag {
+        font-size: 0.85rem !important;
+        padding: 10px 14px !important;
+        max-width: 100% !important;
+    }
+    
+    /* Mobile City Filter */
+    .enhanced-city-filter {
+        margin: 10px 5px 0 5px !important;
+        padding: 15px 10px !important;
+        border-radius: 12px !important;
+    }
+    
+    .filter-input select {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 14px 8px !important;
+    }
+    
+    .find-btn, .location-btn {
+        padding: 14px 18px !important;
+        font-size: 0.95rem !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Mobile TV Map */
+    .tv-map-container {
+        margin: 15px 5px !important;
+        padding: 15px 15px 60px 15px !important;
+        border-radius: 15px !important;
+    }
+    
+    .tv-map-screen {
+        height: 250px !important;
+        border-radius: 8px !important;
+    }
+    
+    .tv-controls-panel {
+        gap: 8px !important;
+        padding: 10px 15px !important;
+        border-radius: 15px !important;
+    }
+    
+    .tv-control-btn {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 12px !important;
+    }
+    
+    .tv-power-btn {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 16px !important;
+    }
+    
+    .tv-brand {
+        font-size: 0.7rem !important;
+        padding: 5px 12px !important;
+        letter-spacing: 1px !important;
+    }
+    
+    /* Mobile Store Cards */
+    .stores-grid {
+        gap: 15px !important;
+        margin-bottom: 25px !important;
+    }
+    
+    .store-card {
+        margin: 0 5px !important;
+        border-radius: 12px !important;
+    }
+    
+    .store-card-header {
+        padding: 12px 15px !important;
+    }
+    
+    .store-card-body {
+        padding: 15px !important;
+    }
+    
+    .store-name {
+        font-size: 1.2rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .store-address, .store-city, .store-timing, .store-phone {
+        font-size: 0.9rem !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .store-card-footer {
+        padding: 12px 15px !important;
+        gap: 6px !important;
+    }
+    
+    .view-store-btn, .directions-btn {
+        padding: 10px !important;
+        font-size: 0.9rem !important;
+        border-radius: 6px !important;
+    }
+    
+    /* Mobile Cities Grid */
+    .cities-grid {
+        gap: 15px !important;
+        margin-top: 25px !important;
+    }
+    
+    .city-card {
+        margin: 0 5px !important;
+        border-radius: 12px !important;
+    }
+    
+    .city-header {
+        padding: 15px !important;
+    }
+    
+    .city-body {
+        padding: 15px !important;
+    }
+    
+    /* Mobile Emergency & Notice */
+    .emergency-card, .notice-content {
+        margin: 0 5px !important;
+        padding: 15px 10px !important;
+        border-radius: 12px !important;
+    }
+    
+    .emergency-icon, .notice-icon {
+        font-size: 2.5rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    /* Mobile Modal */
+    .store-modal {
+        padding: 10px !important;
+    }
+    
+    .store-modal-content {
+        margin: 10px 5px !important;
+        border-radius: 12px !important;
+        max-width: calc(100vw - 10px) !important;
+    }
+    
+    .store-modal-header {
+        padding: 15px !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    
+    .store-modal-header h2 {
+        font-size: 1.3rem !important;
+        margin: 0 !important;
+    }
+    
+    .store-modal-body {
+        padding: 15px !important;
+        max-height: 50vh !important;
+    }
+    
+    .detail-row {
+        gap: 15px !important;
+    }
+    
+    .detail-col h4 {
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .detail-col p {
+        font-size: 0.9rem !important;
+        padding-left: 24px !important;
+    }
+    
+    .store-detail-actions {
+        gap: 8px !important;
+        margin-top: 20px !important;
+        padding-top: 15px !important;
+    }
+    
+    .action-btn {
+        padding: 12px !important;
+        font-size: 0.95rem !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Mobile Footer */
+    .footer {
+        padding: 30px 0 20px !important;
+    }
+    
+    .footer-grid {
+        gap: 25px !important;
+    }
+    
+    .footer-col {
+        padding: 0 10px !important;
+    }
+    
+    .footer-logo {
+        font-size: 1.3rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .footer-description {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .footer-links li {
+        margin: 8px 0 !important;
+    }
+    
+    .footer-links a {
+        font-size: 0.9rem !important;
+        padding: 8px 12px !important;
+        border-radius: 6px !important;
+        display: inline-block !important;
+    }
+    
+    .footer-bottom {
+        margin-top: 25px !important;
+        padding-top: 20px !important;
+        font-size: 0.85rem !important;
+        text-align: center !important;
+    }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 320px) {
+    .stores-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .stores-search-input, .filter-input select {
+        font-size: 14px !important;
+    }
+    
+    .tv-map-screen {
+        height: 200px !important;
+    }
+    
+    .tv-control-btn {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 10px !important;
+    }
+    
+    .tv-power-btn {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 14px !important;
+    }
+    
+    .store-card {
+        margin: 0 2px !important;
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .stores-header {
+        padding: 20px 0 15px !important;
+    }
+    
+    .tv-map-screen {
+        height: 200px !important;
+    }
+    
+    .nav-menu {
+        height: calc(100vh - 50px) !important;
+        top: 50px !important;
+    }
+    
+    .store-modal-body {
+        max-height: 40vh !important;
+    }
+}
+
+/* High DPI Displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2), 
+       screen and (min-resolution: 192dpi) {
+    .tv-map-screen iframe {
+        filter: contrast(1.1) brightness(0.95) saturate(1.1) !important;
+    }
+    
+    .store-card, .city-card {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .tv-control-btn, .find-btn, .location-btn, .stores-search-button {
+        min-height: 44px !important; /* Apple's recommended touch target size */
+        min-width: 44px !important;
+    }
+    
+    .nav-menu a {
+        min-height: 48px !important;
+    }
+    
+    .store-suggestion-tag {
+        min-height: 40px !important;
+        padding: 12px 16px !important;
+    }
+}
+
+/* Accessibility Improvements for Mobile */
+@media screen and (max-width: 768px) {
+    /* Focus states for better accessibility */
+    .stores-search-input:focus,
+    .filter-input select:focus {
+        outline: 2px solid #ff6600 !important;
+        outline-offset: 2px !important;
+    }
+    
+    .hamburger:focus {
+        outline: 2px solid #ff6600 !important;
+        outline-offset: 2px !important;
+        border-radius: 4px !important;
+    }
+    
+    /* Better contrast for mobile */
+    .nav-menu a {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    .nav-menu a:hover,
+    .nav-menu a:focus,
+    .nav-menu a.active {
+        background: linear-gradient(135deg, #ff6600, #ff8533) !important;
+        border-color: #ff6600 !important;
+    }
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 768px) {
+    input[type="text"],
+    input[type="search"],
+    select {
+        font-size: 16px !important;
+    }
+    
+    /* Black background for select options on mobile */
+    select option,
+    select option:hover,
+    select option:focus,
+    select option:checked {
+        background: #000000 !important;
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        text-shadow: none !important;
+        font-size: 16px !important;
+        padding: 15px 12px !important;
+    }
+}
+
+/* Dark mode support for mobile */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+    .store-card,
+    .city-card {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important;
+    }
+    
+    .store-card-header,
+    .city-header {
+        background: rgba(0, 0, 0, 0.3) !important;
+    }
+}
